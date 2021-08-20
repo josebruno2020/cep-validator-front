@@ -1,0 +1,18 @@
+<app-title title="Lista de CEP"></app-title>
+<main class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CEP</th>
+                <th>Cidade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let cep of ceps">
+                <td>{{ cep.city }}</td>
+                <td>{{ cep.cep }}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

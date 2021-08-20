@@ -1,0 +1,7 @@
+<ul class="nav">
+    <div *ngFor="let route of pages" >
+        <li class="nav-item" >
+            <a class="nav-link active" aria-current="page" [routerLink]="route.path">{{ route.name }}</a>
+        </li>
+    </div>
+</ul>
