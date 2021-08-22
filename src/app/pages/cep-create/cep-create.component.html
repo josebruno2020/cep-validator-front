@@ -1,7 +1,7 @@
 <app-title title="Cadastrar Novo CEP"></app-title>
 <main class="container">
     <app-alert *ngIf="isAlert" [message]="alert" [alertType]="alertType"></app-alert>
-    <form action="" [formGroup]="create" (ngSubmit)="createCep($event)">
+    <form action="" [formGroup]="create" (ngSubmit)="createCep($event)" class="form">
         <div class="form-group">
             <p class="text-sm-left">Não encontrou a cidade? 
                 <button type="button" class="btn btn-sm btn-outline-info" (click)="setNewCity()">
