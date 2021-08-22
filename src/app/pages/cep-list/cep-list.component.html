@@ -1,18 +1,30 @@
 <app-title title="Lista de CEP"></app-title>
 <main class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>CEP</th>
-                <th>Cidade</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let cep of ceps">
-                <td>{{ cep.city }}</td>
-                <td>{{ cep.cep }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <app-alert *ngIf="isAlert" [alertType]="alertType" [message]="alert"></app-alert>
+    <section class="ceps">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>CEP</th>
+                    <th>Cidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+    
+            <tbody *ngIf="!loading">
+                <tr *ngFor="let cep of ceps">
+                    <td>{{ cep.cep }}</td>
+                    <td>{{ cep.city }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" (click)="deleteCep(cep.id)">Remover</button>
+                    </td>
+                </tr>
+            </tbody>
+            <!-- <div *ngIf="!ceps.length">
+                Nenhum registro
+            </div> -->
+        </table>
+        <app-loading *ngIf="loading"></app-loading>
+    </section>
 </main>
+

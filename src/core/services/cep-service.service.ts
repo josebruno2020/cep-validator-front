@@ -1,26 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import apiRoutes from '../helpers/apiRoutes';
 import { HttpServiceService } from './http-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CepServiceService extends HttpServiceService {
+export class CepServiceService {
 
   constructor(
-      http: HttpClient,
+      private http: HttpServiceService,
   ) {
-      super(http);
+      
    }
 
    getCeps(){
-        this.http.get(this.urlPathern+apiRoutes.ceps, this.headerOptions).subscribe((res) => {
-            console.log(res)
-            return res;
-        }, (err) => {
-            console.log(err)
-        })
+        return this.http.httpGet(apiRoutes.ceps);
+   }
+
+   insertCep(model:any) {
+       return this.http.httpPost(apiRoutes.ceps, model);
+   }
+
+
+   deleteCep(id:number) {
+       return this.http.httpDelete(apiRoutes.ceps+`/${id}`)
    }
 }

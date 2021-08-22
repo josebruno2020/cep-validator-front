@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, ROUTES } from '@angular/router';
+import { Router } from '@angular/router';
+import { CacheService } from 'src/core/services/cache.service';
 import routes from 'src/routes';
 
 @Component({
@@ -9,15 +10,27 @@ import routes from 'src/routes';
 })
 export class NavBarComponent implements OnInit {
   pages:any[];
-  constructor() { }
+  constructor(
+      private cacheService:CacheService,
+      private router:Router,
+  ) { }
 
   ngOnInit(): void {
-      this.pages = routes.filter(route => {
-          if(route.nav) {
-            return true;
-          }
-      })
-      console.log(this.pages)
+    this.getAndFilterPages();
+  }
+  
+
+  getAndFilterPages() {
+    this.pages = routes.filter(route => {
+        if(route.nav) {
+          return true;
+        }
+    })
+  }
+
+  logout() {
+      this.cacheService.setUserNull();
+      return this.router.navigate(['/login']);
   }
 
 }

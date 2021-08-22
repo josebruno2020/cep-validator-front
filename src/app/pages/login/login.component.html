@@ -1,1 +1,22 @@
-<h1>Login!!</h1>
+<app-title title="Login"></app-title>
+<main class="container">
+    <section class="login d-flex justify-content-center flex-column">
+        <app-alert *ngIf="isAlert" [message]="alert" [alertType]="alertType"></app-alert>
+        <form action="" (ngSubmit)="login()" [formGroup]="loginGroup">
+            <div class="form-group">
+                <label for="email" class="label">E-mail</label>
+                <input type="email" name="email" id="email" formControlName="email" class="form-control" placeholder="Seu e-mail">
+            </div>
+    
+            <div class="form-group">
+                <label for="password" class="label">Senha</label>
+                <input type="password" name="password" id="password" formControlName="password" class="form-control" placeholder="Sua senha">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+        </form>
+    </section>
+    
+</main>

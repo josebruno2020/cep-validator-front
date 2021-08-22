@@ -1,1 +1,35 @@
 <app-title title="Cadastrar Novo CEP"></app-title>
+<main class="container">
+    <app-alert *ngIf="isAlert" [message]="alert" [alertType]="alertType"></app-alert>
+    <form action="" [formGroup]="create" (ngSubmit)="createCep($event)">
+        <div class="form-group">
+            <p class="text-sm-left">Não encontrou a cidade? 
+                <button type="button" class="btn btn-sm btn-outline-info" (click)="setNewCity()">
+                    <span *ngIf="!isNewCity">Escolha uma cidade</span>
+                    <span *ngIf="isNewCity">Cadastre uma nova</span>
+                </button>
+            </p>
+
+            <div *ngIf="isNewCity">
+                <label for="city" class="label">Escolha a Cidade:</label>
+                <select name="" id="city" class="form-control" formControlName="city_id">
+                    <option [value]="city.id" *ngFor="let city of cities">{{ city.name }}</option>
+                </select>
+            </div>
+            <div *ngIf="!isNewCity">
+                <label for="new_city" class="label">Nova Cidade:</label>
+                <input type="text" name="" id="new_city" class="form-control" formControlName="city">
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label for="cep" class="label">CEP:</label>
+            <input id="cep" type="text"  class="form-control" formControlName="cep" (change)="validateCep()">
+        </div>
+
+        <div class="form-group" *ngIf="!loading">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" [disabled]="!create.valid">
+        </div>
+        <app-loading *ngIf="loading"></app-loading>
+    </form>
+</main>
