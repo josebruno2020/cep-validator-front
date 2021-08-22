@@ -1,0 +1,35 @@
+<app-title title="Cadastro - Correios Ghotam City"></app-title>
+<main class="container">
+    <section class="login d-flex justify-content-center flex-column">
+        <app-alert *ngIf="isAlert" [message]="alert" [alertType]="alertType"></app-alert>
+        <form action="" (ngSubmit)="register()" [formGroup]="registerGroup">
+            <div class="form-group">
+                <label for="name" class="label">Nome</label>
+                <input autofocus type="text" name="name" id="name" formControlName="name" class="form-control" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email" class="label">E-mail</label>
+                <input type="email" name="email" id="email" formControlName="email" class="form-control" placeholder="Seu e-mail">
+            </div>
+    
+            <div class="form-group">
+                <label for="password" class="label">Senha</label>
+                <input type="password" name="password" id="password" formControlName="password" class="form-control" placeholder="Sua senha">
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation" class="label">Confirme sua Senha</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" formControlName="password_confirmation" class="form-control" placeholder="Confirme sua Senha">
+            </div>
+
+            <div class="form-group" *ngIf="!loading">
+                <button type="submit" class="btn btn-primary" [disabled]="!registerGroup.valid">Fazer Cadastro</button>
+            </div>
+            <app-loading *ngIf="loading"></app-loading>
+            <div class="mt-2">
+                Já tem cadastro? <a routerLink="/login">Faça o login.</a>
+            </div>
+        </form>
+    </section>
+    
+</main>

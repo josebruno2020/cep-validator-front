@@ -1,5 +1,5 @@
-<app-title title="Lista de CEP"></app-title>
 <main class="container">
+    <app-title title="Lista de CEP"></app-title>
     <app-alert *ngIf="isAlert" [alertType]="alertType" [message]="alert"></app-alert>
     <section class="ceps">
         <table class="table">
@@ -20,11 +20,15 @@
                     </td>
                 </tr>
             </tbody>
-            <!-- <div *ngIf="!ceps.length">
-                Nenhum registro
-            </div> -->
         </table>
         <app-loading *ngIf="loading"></app-loading>
     </section>
+    <div class="text-md-right">
+        <ngb-pagination
+            (pageChange)="setPage($event)" 
+            [collectionSize]="total$"
+            [pageSize]="pageSize">
+        </ngb-pagination>
+    </div>
 </main>
 

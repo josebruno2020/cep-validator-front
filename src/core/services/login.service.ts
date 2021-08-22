@@ -12,4 +12,8 @@ export class LoginService {
   login(model:any) {
       return this.http.httpPost(apiRoutes.login, model);
   }
+
+  register(model:any) {
+      return this.http.httpPost(apiRoutes.register, model);
+  }
 }

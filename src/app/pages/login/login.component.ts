@@ -30,10 +30,13 @@ export class LoginComponent extends BasePageComponent implements OnInit {
   }
 
   login() {
+    this.loading = true;
+    this.closeAlert();
     this.loginService.login(this.loginGroup.value).subscribe((res:any) => {
         this.cacheService.setUser(res.token, res.user);
         return this.router.navigate(['']);
     }, err => {
+        this.loading = false;
         console.log(err);
         this.setupAlert(apiMessage.errorLogin, 'danger');
     })

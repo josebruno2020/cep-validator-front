@@ -55,16 +55,14 @@ export class CepCreateComponent extends BasePageComponent implements OnInit {
     }
     this.loading = true;
     this.cepService.insertCep(this.create.value).subscribe((res) => {
-        console.log(res);
         this.setupAlert(apiMessage.successNewCep);
         this.loading = false;
         return this.router.navigate(['']);
         
         //TODO zerar formulario;
-    }, err => {
+    }, () => {
         this.loading = false;
         this.setupAlert(apiMessage.errorDelete, 'danger');
-        console.log(err);
     })
 
   }
@@ -76,13 +74,11 @@ export class CepCreateComponent extends BasePageComponent implements OnInit {
   //TODO FAZER A VALIDACAO!!!
   validateCep() :boolean {
     let cep = this.create.value.cep;
-    console.log(cep);
     
     let expSize = new RegExp(/^([1-9])([0-9]{5})$/);
     let expPair = new RegExp(/([0-9])([02468])(\1)/);
 
     if(expPair.test(cep)) {
-        expPair.exec(cep);
         this.setupAlert('CEP inválido! Contém dígitos repetitivos alternado em pares', 'danger');
         return false;
     }
@@ -91,7 +87,6 @@ export class CepCreateComponent extends BasePageComponent implements OnInit {
         this.setupAlert('CEP Inválido! Deve ser um número entre 100.000 e 999.999', 'danger');
         return false;
     }
-    console.log("CEP VALIDO!!")
     this.closeAlert();
     return true;
       

@@ -5,6 +5,7 @@ import { LoginComponent } from "src/app/pages/login/login.component";
 import { AuthGuard } from "src/core/guards/auth.guard";
 import { LoginlayoutComponent } from "src/app/layouts/loginlayout/loginlayout.component";
 import { LayoutComponentComponent } from "src/app/layouts/layout-component/layout-component.component";
+import { RegisterComponent } from "src/app/pages/register/register.component";
 
 const routes = [
     {
@@ -34,6 +35,16 @@ const routes = [
         component:LoginlayoutComponent,
         children: [
             {path:'', component: LoginComponent,}
+        ],
+        
+    },
+    {
+        path: 'register',
+        name:'Cadastro',
+        nav:false,
+        component:LoginlayoutComponent,
+        children: [
+            {path:'', component: RegisterComponent,}
         ],
         
     },

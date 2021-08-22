@@ -1,11 +1,14 @@
-<ul class="nav">
-    <div *ngFor="let route of pages" >
-        <li class="nav-item" >
-            <a class="nav-link" [routerLinkActive]="route.path" aria-current="page" [routerLink]="route.path">{{ route.name }}</a>
-        </li>
-        
-    </div>
-    <li class="nav-item" >
-        <button class="nav-link" type="button" (click)="logout()">Logout</button>
+<ul class="nav d-flex justify-content-between">
+    <nav class="d-flex">
+        <div *ngFor="let route of pages" >
+            <li class="nav-item" >
+                <a class="nav-link" [routerLinkActive]="route.path" aria-current="page" [routerLink]="route.path">{{ route.name }}</a>
+            </li>
+            
+        </div>
+    </nav>
+    <li class="nav-item mr-5" >
+        <a class="nav-link" type="button" (click)="logout($event)">Sair</a>
     </li>
+    
 </ul>

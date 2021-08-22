@@ -28,7 +28,8 @@ export class NavBarComponent implements OnInit {
     })
   }
 
-  logout() {
+  logout(e) {
+      e.preventDefault();
       this.cacheService.setUserNull();
       return this.router.navigate(['/login']);
   }

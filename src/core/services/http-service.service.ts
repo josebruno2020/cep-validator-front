@@ -13,7 +13,6 @@ export class HttpServiceService {
       ) 
       {
         const token = localStorage.getItem('access_token');
-        console.log("TOKEN "+token);
         this.headerOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -28,6 +27,10 @@ export class HttpServiceService {
 
       httpGet(route:string) {
         return this.http.get(this.urlPathern+route, this.headerOptions);
+      }
+
+      httpGetPaginate(route:string, page:number) {
+        return this.http.get(this.urlPathern+route+`?page=${page}`, this.headerOptions);
       }
 
       httpPost(route:string, model:any) {

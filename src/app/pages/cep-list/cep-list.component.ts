@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import apiMessage from 'src/core/helpers/errorMessage';
 import { CepServiceService } from 'src/core/services/cep-service.service';
 import { CityService } from 'src/core/services/city.service';
@@ -12,6 +13,9 @@ import { BasePageComponent } from '../base-page/base-page.component';
 export class CepListComponent extends BasePageComponent implements OnInit  {
   ceps: any;
   cities:any;
+  total$: Observable<number>;
+  page: number = 1;
+  pageSize:number = 5;
 
   constructor(
       private cepService: CepServiceService,
@@ -26,8 +30,10 @@ export class CepListComponent extends BasePageComponent implements OnInit  {
 
   getCeps() {
     this.loading = true;
-    this.cepService.getCeps().subscribe((res:any) => {
+    this.cepService.getCeps(this.page).subscribe((res:any) => {
+        console.log(res);
         this.loading = false;
+        this.total$ = res.total;
         this.ceps = res.data;
       }, err => {
           this.loading = false;
@@ -61,6 +67,12 @@ export class CepListComponent extends BasePageComponent implements OnInit  {
         this.loading = false;
         this.setupAlert(apiMessage.errorDelete, 'danger');
       })
+  }
+
+  setPage = (page) => {
+
+    this.page = page;
+    this.getCeps();
   }
 
   

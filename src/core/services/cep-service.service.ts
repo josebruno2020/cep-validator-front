@@ -14,8 +14,8 @@ export class CepServiceService {
       
    }
 
-   getCeps(){
-        return this.http.httpGet(apiRoutes.ceps);
+   getCeps(page=1){
+        return this.http.httpGetPaginate(apiRoutes.ceps, page);
    }
 
    insertCep(model:any) {
