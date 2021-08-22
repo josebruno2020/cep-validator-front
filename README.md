@@ -1,27 +1,23 @@
 # CepFrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+Front-end da aplicação e validador de CEP de Ghotam City.
 
-## Development server
+# Tecologia Utilizada
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para o front deste projeto, foi utilizado o framowork Angular.js, em sua versão 12. Versão do node.js utilizado: 14.0.0
 
-## Code scaffolding
+# Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone o repositório
+2. Dentro da pasta, rode o comando npm install (recomendado ter a mesma versão do node js)
+3. Tendo o angular instalado em sua máquina, basta rodar o comando ng serve para a aplicação rodar localmente;
 
-## Build
+# Utilização
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Sem as credencias, você será redirecionado para a página de login.
+2. Caso tenha rodado o 'seed' da api, terá um usuário disponível: 
+  Email: bruno@teste.com
+  Senha: 123123
+3. Caso não tenha rodado o seed do banco, faça o cadastro na página de registro.
+4. Página de listagem de ceps cadastrados;
+5. Página de novo CEP com validação. As duas páginas com proteção de token JWT;
