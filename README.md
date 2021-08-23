@@ -12,7 +12,7 @@ Para o front deste projeto, foi utilizado o framowork Angular.js, em sua versão
 2. Dentro da pasta, rode o comando npm install (recomendado ter a mesma versão do node js)
 3. Tendo o angular instalado em sua máquina, basta rodar o comando ng serve para a aplicação rodar localmente;
 
-# Utilização
+# Utilização (atente-se de ter feito a instalação local da api e ela estar rodando na porta 8000 para o front funcionar sem problemas)
 
 1. Sem as credencias, você será redirecionado para a página de login.
 2. Caso tenha rodado o 'seed' da api, terá um usuário disponível: 
